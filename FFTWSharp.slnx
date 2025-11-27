@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="FFTWSharp/FFTWSharp.csproj" />
+  <Project Path="TEST/TEST.csproj" />
+</Solution>

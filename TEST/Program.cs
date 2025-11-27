@@ -49,8 +49,7 @@ r.PrintLine(ConsoleColor.Green);
 
 
 
-
-
+FFTWSharp.PinnableArraySignalExtension.GetSingleSidedComplexScaled(c);
 
 //BenchmarkRunner.Run<FFT_benchmark>();
 

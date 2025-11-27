@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace FFTWSharp;
 
-public static class PinnableArrayExtension
+public static class PinnableArraySignalExtension
 {
 
     extension(PinnableArray<float> array)
@@ -43,6 +43,7 @@ public static class PinnableArrayExtension
         }
     }
 
+    
     extension(PinnableArray<ComplexFp32> array)
     {
         /// <summary>
@@ -195,7 +196,7 @@ public static class PinnableArrayExtension
 
 
         /// <summary>
-        ///  从完整的 FFT 结果中提取单边谱（Complex[]）。此时的 array 是完整的傅立叶变换结果。
+        ///  从完整的 FFT 结果中提取单边谱（Complex[]）。此时的 <see cref="array"/> 是完整的傅立叶变换结果。
         /// - 自动跳过 DC（索引0）
         /// - 包含 Nyquist 频率（如果存在）
         /// - 奇偶长度完全兼容，和 MATLAB / NumPy 行为 100% 一致
@@ -217,7 +218,7 @@ public static class PinnableArrayExtension
 
 
         /// <summary>
-        /// 返回能量正确的单边 Complex[]（除 DC 外已 ×2/N）。此时的 array 是完整的傅立叶变换结果。
+        /// 返回能量正确的单边 Complex[]（除 DC 外已 ×2/N）。此时的 <see cref="array"/> 是完整的傅立叶变换结果。
         /// 适合直接取幅度画图或功率计算
         /// </summary>
         /// <remarks>

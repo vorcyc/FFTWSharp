@@ -13,15 +13,15 @@ using Vorcyc.Mathematics.Numerics;
 using Vorcyc.Mathematics.SignalProcessing.Fourier;
 using Vorcyc.Mathematics.SignalProcessing.Transforms;
 
-PinnableArray<float> r = new(1024, true);
-//r.Fill(0, 1);
-r.Each((index, ref ele) =>
-{
-    ele = 1.0f * MathF.Cos(2 * MathF.PI * 1000 * index / 48000);
-});
+//PinnableArray<float> r = new(1024, true);
+////r.Fill(0, 1);
+//r.Each((index, ref ele) =>
+//{
+//    ele = 1.0f * MathF.Cos(2 * MathF.PI * 1000 * index / 48000);
+//});
 
-PinnableArray<ComplexFp32> c = new(1024, true);
-c.Fill(0, new ComplexFp32(1, 0));
+//PinnableArray<ComplexFp32> c = new(1024, true);
+//c.Fill(0, new ComplexFp32(1, 0));
 
 //r.PrintLine(ConsoleColor.Yellow);
 //c.PrintLine(ConsoleColor.Cyan);
@@ -36,20 +36,31 @@ c.Fill(0, new ComplexFp32(1, 0));
 
 
 
+//FFTWSharp.FftwSingle.Dft1D.Dft1DR2C(r, c);
+//c.PrintLine();
+
+//var m = c.Select(e => e.Magnitude);
+//m.PrintLine(ConsoleColor.Yellow);
+//Console.WriteLine(m.ElementAt(21)*2/c.Length);
+
+
+//FFTWSharp.FftwSingle.Dft1D.Dft1DC2R(c, r);
+//r.PrintLine(ConsoleColor.Green);
+
+
+
+Span<float> r = stackalloc float[8] { 1f, 2f, 3f, 4f, 5f, 6f, 7f, 8f };
+var c = new PinnableArray<ComplexFp32>(r.Length);
+
 FFTWSharp.FftwSingle.Dft1D.Dft1DR2C(r, c);
 c.PrintLine();
 
-var m = c.Select(e => e.Magnitude);
-m.PrintLine(ConsoleColor.Yellow);
-Console.WriteLine(m.ElementAt(21)*2/c.Length);
-
-
-FFTWSharp.FftwSingle.Dft1D.Dft1DC2R(c, r);
-r.PrintLine(ConsoleColor.Green);
+Dft1D.Dft1DC2R(c, r);
+r.PrintLine();
 
 
 
-FFTWSharp.PinnableArraySignalExtension.GetSingleSidedComplexScaled(c);
+
 
 //BenchmarkRunner.Run<FFT_benchmark>();
 

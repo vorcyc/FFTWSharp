@@ -140,7 +140,7 @@ public static class PinnableArraySignalExtension
         /// <remarks>
         /// 用于绘制幅度谱、能量/功率分析、峰值检测等。偶数长度 Nyquist 同样加倍，严格需求需自行调整。
         /// </remarks>
-        public PinnableArray<ComplexFp32> GetSingleSidedComplexScaled()
+        public PinnableArray<ComplexFp32> GetSingleSidedScaled()
         {
             int N = array.Length;
             int len = N / 2 + (N % 2);
@@ -234,7 +234,7 @@ public static class PinnableArraySignalExtension
         /// <remarks>
         /// 用于幅度/功率绘图、峰值与 SNR 评估等。偶数长度 Nyquist 同样加倍，可自行再行修正。
         /// </remarks>
-        public PinnableArray<Complex> GetSingleSidedComplexScaled()
+        public PinnableArray<Complex> GetSingleSidedScaled()
         {
             int N = array.Length;
             int len = N / 2 + (N % 2);
